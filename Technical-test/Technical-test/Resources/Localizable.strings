@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  Technical-test
+
+  Created by Andrew on 13.04.2023.
+  
+*/
+
+"GeneralError.Title" = "Error";
+"GeneralError.Message" = "Something went wrong";
+"ErrorMessage.Parsing" = "Parsing error";
+"ErrorMessage.Endpoint" = "Invalid url";
+"ErrorMessage.ServerError" = "Server error";
+"ErrorMessage.ConnectionLost" = "Connection lost.\nCheck your connection and try again later";
+"QuotesList.Title" = "Quotes List";
+"Favorites.Add" = "Add to favorites";
+"Favorites.Remove" = "Remove from favorites";

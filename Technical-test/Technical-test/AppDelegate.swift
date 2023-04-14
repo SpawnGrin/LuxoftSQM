@@ -9,20 +9,34 @@ import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
-
+    
+    private var compositionRoot: CompositionRoot?
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        window = UIWindow(frame: UIScreen.main.bounds)
-        let vc:QuotesListViewController = QuotesListViewController()
-        let nc:UINavigationController = UINavigationController(rootViewController: vc)
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.compositionRoot = CompositionRoot(window: window)
         
-        self.window?.rootViewController = nc
-        self.window?.makeKeyAndVisible()
+        startRootController(for: application, with: launchOptions)
         
         return true
     }
-
+    
+    private func startRootController(for application: UIApplication, with launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
+        let presentationController = UINavigationController()
+        let lauchStoryboard = UIStoryboard(name: "LaunchScreen", bundle: nil)
+        let launchController = lauchStoryboard.instantiateInitialViewController() ?? UIViewController()
+        
+        presentationController.setViewControllers([launchController], animated: false)
+        window?.rootViewController = presentationController
+        window?.makeKeyAndVisible()
+        compositionRoot?.compose(
+            presentationController: presentationController,
+            application: application,
+            didFinishLaunchingWithOptions: launchOptions
+        )
+    }
 }
 
